@@ -1,0 +1,15 @@
+
+        _           _   _            _          _ _ 
+    ___| | __ _ ___| |_(_) ___   ___| |__   ___| | |
+   / _ \ |/ _` / __| __| |/ __| / __| '_ \ / _ \ | |
+  |  __/ | (_| \__ \ |_| | (__  \__ \ | | |  __/ | |
+   \___|_|\__,_|___/\__|_|\___| |___/_| |_|\___|_|_|
+
+  Created by MorningSpace Lab
+
+  Learn more @ https://github.com/morningspace/elastic-shell
+
+  mailto: morningspace@yahoo.com
+  https://morningspace.github.io
+
+  Have fun!

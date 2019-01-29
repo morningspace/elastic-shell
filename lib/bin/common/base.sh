@@ -153,5 +153,9 @@ fi
 [ -f $bin_dir/common/log.sh ] && . $bin_dir/common/log.sh
 [ -f $bin_dir/common/net.sh ] && . $bin_dir/common/net.sh
 
-[ -f $bin_dir/ui/cli-base.sh ] && . $bin_dir/ui/cli-base.sh
-[ -f $bin_dir/ui/cli-seq.sh ] && . $bin_dir/ui/cli-seq.sh
+if [[ $@ =~ --ui-text ]] ; then
+  [ -f $bin_dir/ui/text.sh ] && . $bin_dir/ui/text.sh
+else
+  [ -f $bin_dir/ui/cli-base.sh ] && . $bin_dir/ui/cli-base.sh
+  [ -f $bin_dir/ui/cli-seq.sh ] && . $bin_dir/ui/cli-seq.sh
+fi

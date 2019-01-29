@@ -8,6 +8,7 @@ Commands:
   snapshot            manage snapshot
 
 Run 'elash COMMAND --help' for more information on a command.
+Run 'elash COMMAND --ui-text' to launch text UI.
 
 ------------------------------------------------------------------------------
 Learn more @ https://github.com/morningspace/elastic-shell
