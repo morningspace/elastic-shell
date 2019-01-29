@@ -1,0 +1,10 @@
+{
+  "query" :
+  {
+    "query_string":
+    {
+      "fields" : ["Hobbies"],
+      "query": "Skiing"
+    }
+  }
+}

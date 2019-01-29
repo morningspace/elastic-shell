@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+
+  elash:
+    build:
+      context: .
+    image: morningspace/elastic-shell
+    volumes:
+      - ./lib/config:/root/elash/config

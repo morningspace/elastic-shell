@@ -1,0 +1,60 @@
+
+Elastic Shell - Index
+
+Usage: elash index [OPTIONS] COMMAND [ARGS]
+
+Commands:
+  cat               Elasticsearch cat APIs
+  create            Create new index
+  update            Update index settings
+  delete            Delete existing index
+  doc               Manipulate index documents
+  bulk              Send bulk post to index
+  search            Issue search request
+  config            Show configuration
+
+Options:
+  --help            Help docs
+
+Examples:
+
+# call a single cat API
+elash index cat indices
+# call multiple cat APIs
+elash index cat indices shards nodes health
+# list all available cat APIs
+elash index cat ...
+
+# create a single index
+elash index create github none
+# create multiple indices
+elash index create github index-one-shard-no-replica test none
+
+# update settings
+elash index update settings github settings-no-refresh-no-replica
+# update parameterized settings
+elash index update settings github settings-parameterized
+
+# delete a single index
+elash index delete github
+# delete multiple indices
+elash index delete github test
+
+# add a single doc
+elash index doc add github issues doc-issue-1
+# add multiple docs
+elash index doc add github issues doc-issue-1 doc-issue-2
+
+# bulk post a single request
+elash index bulk github bulk-open-issues
+# bulk post multiple requests
+elash index bulk github bulk-open-issues bulk-closed-issues
+
+# search
+elash index search github search-sample-query
+
+# config
+elash index config
+
+------------------------------------------------------------------------------
+Learn more @ https://github.com/morningspace/elastic-shell

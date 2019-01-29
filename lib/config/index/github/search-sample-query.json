@@ -1,0 +1,11 @@
+{
+  "_source": ["summary"],
+  "query" :
+  {
+    "query_string":
+    {
+      "fields" : ["summary"],
+      "query": "java"
+    }
+  }
+}

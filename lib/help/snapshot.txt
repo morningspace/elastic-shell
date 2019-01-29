@@ -1,0 +1,33 @@
+
+Elastic Shell - Snapshot
+
+Usage: elash snapshot [OPTIONS] COMMAND [ARGS]
+
+Commands:
+  cat               Elasticsearch cat APIs
+  repo              Manipulate snapshot repository
+    new             Create new snapshot repository
+  create            Create new snapshot
+  list              List all snapshots in a repository
+  restore           Restore a snapshort in a repository
+  config            Show configuration
+
+Options:
+  --help            Help docs
+
+Examples:
+
+# create new repository
+elash snapshot repo new my_backup
+
+# create snapshot in specified repository
+elash snapshot create my_backup github
+
+# list snapshots in specified repository
+elash snapshot list my_backup
+
+# restore snapshot from specified repository
+elash snapshot restore my_backup github
+
+------------------------------------------------------------------------------
+Learn more @ https://github.com/morningspace/lab-elk-toolkit

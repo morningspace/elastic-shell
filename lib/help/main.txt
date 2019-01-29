@@ -1,0 +1,13 @@
+
+Elastic Shell
+
+Usage: elash COMMAND [OPTIONS] SUBCOMMAND [ARGS]
+
+Commands:
+  index               manage index
+  snapshot            manage snapshot
+
+Run 'elash COMMAND --help' for more information on a command.
+
+------------------------------------------------------------------------------
+Learn more @ https://github.com/morningspace/elastic-shell
