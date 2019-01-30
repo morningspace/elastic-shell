@@ -124,6 +124,8 @@ update_settings() {
       sed -e "s/@@index_number_of_replicas/$index_number_of_replicas/g" | \
       sed -e "s/@@index_refresh_interval/$index_refresh_interval/g")
 
+    echo $settings_req | to_json | log
+
     net_put "$index/_settings" --data "$settings_req" --silent | \
       to_json | textbox "Update $index Settings"
   done

@@ -3,7 +3,12 @@
 COLUMNS=1
 
 on_init() {
+  log_app_start
   cat $app_home/help/welcome.txt
+}
+
+on_exit() {
+  log_app_stop
 }
 
 header() {
@@ -46,6 +51,7 @@ formbox() {
         value=${input:-$value}
         eval "$field=$value"
         items[$((REPLY-1))]="$field=$value"
+        log info "User input: $field=$value"
 
         break
       fi
@@ -68,6 +74,7 @@ inputbox() {
   read -r -p "$text" input
 
   eval "$field=${input:-\"$value\"}"
+  log info "User input: $field=${input:-$value}"
 }
 
 menubox() {
@@ -78,11 +85,14 @@ menubox() {
 
   header "$title" "$text"
 
+  log info "Available options: ${items[@]}"
+
   local item
   local PS3="# $text"
   select item in "${items[@]}" ; do
     if [[ ! -z $item ]] ; then
       eval "$selected=\"$item\""
+      log info "User choice: $selected=$item"
 
       [[ $item == "return" ]] && return -1 || return 0
     fi
@@ -94,18 +104,30 @@ msgbox() {
   local text=$2
 
   header "$title" "$text"
+
+  (
+  case $title in
+    "error") error "$text" ;;
+    "warn") warn "$text" ;;
+    "info") info "$text" ;;
+    *) echo $title: $text ;;
+  esac
+  ) | log
 }
 
 textbox() {
   local title=$1
   header "$title"
+  log info "$title"
 
+  (
   local lines=1
   while IFS= read -r line || [[ -n $line ]] ; do
     (( $lines > $MAX_LINES )) && echo "(trancated...)" && break
     echo "$line"
     (( ++lines ))
   done
+  ) | tee >(log)
 }
 
 programbox() {

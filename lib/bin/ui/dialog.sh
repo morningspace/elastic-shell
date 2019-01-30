@@ -1,12 +1,14 @@
 #!/bin/bash
 
 on_init() {
+  log_app_start
   backtitle="Elastic Shell - $app_cmd"
   dialog --backtitle "$backtitle" --textbox $app_home/help/welcome.txt 21 66
 }
 
 on_exit() {
   clear
+  log_app_stop
 }
 
 formbox() {
@@ -38,6 +40,7 @@ formbox() {
     local value=$(eval "echo \$$field")
 
     eval "$field=${inputs[i]:-\"$value\"}"
+    log info "User input: $field=${inputs[i]:-$value}"
   done
 }
 
@@ -60,6 +63,8 @@ menubox() {
 
   local item=${items[$(cat $tmp)]}
   eval "$selected=\"$item\""
+  log info "Available options: ${items[@]}"
+  log info "User choice: $selected=$item"
 }
 
 inputbox() {
@@ -75,6 +80,7 @@ inputbox() {
 
   local input=$(cat $tmp)
   eval "$field=${input:-\"$value\"}"
+  log info "User input: $field=${input:-$value}"
 }
 
 msgbox() {
@@ -82,6 +88,15 @@ msgbox() {
   local text=$2
 
   dialog --backtitle "$backtitle" --title "$title" --msgbox "$text" 5 60
+
+  (
+  case $title in
+    "error") error "$text" ;;
+    "warn") warn "$text" ;;
+    "info") info "$text" ;;
+    *) echo $title: $text ;;
+  esac
+  ) | log
 }
 
 textbox() {
@@ -93,7 +108,7 @@ textbox() {
     echo "$line"
     (( ++lines ))
   done
-  ) > $tmp
+  ) | tee $tmp >(log)
 
   dialog --backtitle "$backtitle" --title "$title" --no-mouse --textbox "$tmp" 36 126
 }

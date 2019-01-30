@@ -7,6 +7,7 @@ config_dir=$app_home/config
 tmp=/tmp/tmp$$
 tmp_res=/tmp/tmp_res$$
 tmp_ret=/tmp/tmp_ret$$
+tmp_dryrun=/tmp/tmp_dryrun$$
 
 selected_dir=
 selected_file=
@@ -19,7 +20,7 @@ exists() {
 
 preflight_check() {
   exists "curl" || {
-    error "dependency 'curl' not found, exit"
+    warn "dependency 'curl' not found, launch in dry run mode"
   }
 
   exists "jq" || {
@@ -41,7 +42,7 @@ init_app() {
 on_exit() (:)
 
 clean_up() {
-  rm -f $tmp $tmp_res $tmp_ret
+  rm -f $tmp $tmp_res $tmp_ret $tmp_dryrun
   on_exit
   exit
 }

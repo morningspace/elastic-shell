@@ -44,6 +44,8 @@ reindex() {
     sed -e "s/@@socket_timeout/$reindex_socket_timeout/g" | \
     sed -e "s/@@size/$reindex_size/g")
 
+  echo $reindex_post | to_json | log
+
   local wait="wait_for_completion=$reindex_wait_for_completion"
   local timeout="timeout=$reindex_timeout"
 

@@ -14,6 +14,7 @@ Options:
   --help            Help docs
   --ui-text         Launch text UI
   --ui-dialog       Launch dialog UI
+  --dry-run         Launch in dry run mode
 
 Examples:
 

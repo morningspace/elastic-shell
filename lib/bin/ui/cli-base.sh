@@ -1,6 +1,7 @@
 #!/bin/bash
 
 app_args=("$@")
+dryrun=()
 
 on_init() {
   if array_contains app_args "--help" ; then
@@ -8,6 +9,45 @@ on_init() {
     cat $app_home/help/$file.txt
     exit
   fi
+
+  if array_contains app_args "--dry-run" || ! exists 'curl' ; then
+    if [[ -f $config_dir/dryrun.properties ]] ; then
+      local OLDIFS=$IFS
+      IFS=$'\r\n'
+      dryrun=($(<$config_dir/dryrun.properties))
+      echo 0 > $tmp_dryrun
+      IFS=$OLDIFS
+    fi
+
+    curl() {
+      local args=("$@")
+
+      local pos=$(array_find args "--output")
+      if (( pos >= 0 )) ; then
+        (( pos+=2 )) ; echo "(dry run...)" > ${!pos}
+      fi
+
+      local res="(dry run...)"
+      if [[ "$@" =~ (http[s]?[^ ]*) ]] ; then
+        local url=${BASH_REMATCH[1]}
+        local dryrun_pos=$(cat $tmp_dryrun) run
+        while (( dryrun_pos < ${#dryrun[@]} )) ; do
+          run=(${dryrun[$dryrun_pos]})
+          [[ $run =~ ^# ]] && (( ++dryrun_pos )) && continue
+          [[ ${run[0]} == $url ]] && (( ++dryrun_pos )) && res=${run[@]:1}
+          break
+        done
+        echo $dryrun_pos > $tmp_dryrun
+      fi
+      echo $res
+    }
+  fi
+
+  log_app_start
+}
+
+on_exit() {
+  log_app_stop
 }
 
 to_input() {
@@ -40,15 +80,18 @@ array_find() {
 msgbox() {
   local title=$(echo $1 | tr '[:upper:]' '[:lower:]')
   local message=$(echo $2 | tr '[:upper:]' '[:lower:]')
+  (
   case $title in
     "error") error "$message" ;;
     "warn") warn "$message" ;;
     "info") info "$message" ;;
     *) echo $title: $message ;;
   esac
+  ) | tee >(log)
 }
 
 textbox() {
+  (
   echo
   local title=$1
   echo $title
@@ -59,6 +102,7 @@ textbox() {
     echo "$line"
     (( ++lines ))
   done
+  ) | tee >(log)
 }
 
 programbox() {

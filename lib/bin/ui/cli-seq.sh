@@ -1,7 +1,7 @@
 #!/bin/bash
 
 arg_pos=0
-ignored_args=()
+ignored_args=("--dry-run")
 
 next_arg_pos() {
   while (( arg_pos < ${#app_args[@]} )) ; do
@@ -22,6 +22,7 @@ print_options() {
 }
 
 formbox() {
+  (
   local title=$1
   echo
   echo "$title:"
@@ -30,6 +31,7 @@ formbox() {
     local value=$(eval "echo \$$field")
     echo "  $field=$value"
   done
+  ) | tee >(log)
 }
 
 menubox() {
@@ -58,6 +60,8 @@ menubox() {
   fi
 
   eval "$seleted=\"$item\""
+  log info "Current arg: $arg, available options: ${items[@]}"
+  log info "User choice: $seleted=$item"
 }
 
 inputbox() {
@@ -71,4 +75,5 @@ inputbox() {
   ((arg_pos++))
 
   eval "$field=\"$value\""
+  log info "User input: $field=$value"
 }
