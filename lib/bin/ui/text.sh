@@ -112,3 +112,14 @@ programbox() {
   header "Progress"
   cat
 }
+
+state_progress() {
+  if [[ -z $1 ]] ; then
+    echo -n "."
+  else
+    state=$1
+
+    [[ ! $state =~ ^start_ ]] && echo "[done]"
+    [[ $state =~ _end$ ]] && echo "$(date) $2" || echo -n "$(date) $2"
+  fi
+}

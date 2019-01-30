@@ -101,3 +101,11 @@ textbox() {
 programbox() {
   dialog --backtitle "$backtitle" --programbox 36 126
 }
+
+state_progress() {
+  if [[ $1 ]] ; then
+    state=$1
+
+    [[ $state =~ _end$ ]] && echo "$(date) $2" || echo "$(date) $2..."
+  fi
+}

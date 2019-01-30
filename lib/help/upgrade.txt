@@ -1,0 +1,30 @@
+
+Elastic Shell - Upgrade
+
+Usage: elash upgrade [OPTIONS] COMMAND [ARGS]
+
+Commands:
+  cat               Elasticsearch cat APIs
+  full              Run full cluster restart upgrade
+  rolling           Run rolling upgrade
+  report            Show upgrade report
+  config            Show configuration
+
+Options:
+  --help            Help docs
+  --ui-text         Launch text UI
+  --ui-dialog       Launch dialog UI
+
+Examples:
+
+# run full cluster restart upgrade
+elash upgrade full
+
+# run rolling upgrade with specified host
+elash upgrade rolling elasticsearch-1
+
+# show upgrade report
+elash upgrade report
+
+------------------------------------------------------------------------------
+Learn more @ https://github.com/morningspace/lab-elk-toolkit
