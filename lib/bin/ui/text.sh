@@ -24,21 +24,32 @@ formbox() {
   header "$title" "$text"
 
   local items=()
+  local field value
   for field in "${fields[@]}" ; do
-    items+=("$field")
+    value=$(eval "echo \$$field")
+    items+=("$field=$value")
   done
   items+=("return")
 
   local PS3="# Choose one item:"
-  select field in "${items[@]}" ; do
-    if [[ ! -z $field ]] ; then
-      [[ $field == "return" ]] && return -1
+  local item input
+  while true ; do
+    select item in "${items[@]}" ; do
+      if [[ ! -z $item ]] ; then
+        [[ $item == "return" ]] && return -1
 
-      local value=$(eval "echo \$$field") input
-      read -r -p "$field(press Enter to use '$value'):" input
+        field=${item%=*}
+        value=${item#*=}
 
-      eval "$field=${input:-\"$value\"}"
-    fi
+        read -r -p "$field(press Enter to use '$value'):" input
+
+        value=${input:-$value}
+        eval "$field=$value"
+        items[$((REPLY-1))]="$field=$value"
+
+        break
+      fi
+    done
   done
 }
 
