@@ -15,6 +15,7 @@ Commands:
 Options:
   --help            Help docs
   --ui-text         Launch text UI
+  --ui-dialog       Launch dialog UI
 
 Examples:
 

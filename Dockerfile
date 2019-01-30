@@ -2,7 +2,7 @@ FROM alpine
 
 LABEL maintainer="morningspace@yahoo.com"
 
-RUN apk add --no-cache bash curl jq
+RUN apk add --no-cache bash curl jq dialog
 
 WORKDIR /root
 

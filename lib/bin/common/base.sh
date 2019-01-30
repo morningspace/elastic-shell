@@ -25,6 +25,10 @@ preflight_check() {
   exists "jq" || {
     warn "dependency 'jq' not found, some features may not be available"
   }
+
+  exists "dialog" || {
+    warn "dependency 'dialog' not found, dialog mode disabled"
+  }
 }
 
 on_init() (:)
@@ -154,7 +158,14 @@ fi
 [ -f $bin_dir/common/net.sh ] && . $bin_dir/common/net.sh
 [ -f $bin_dir/common/task.sh ] && . $bin_dir/common/task.sh
 
-if [[ $@ =~ --ui-text ]] ; then
+if [[ $@ =~ --ui-dialog ]] ; then
+  if exists "dialog" ; then
+    [[ -f $bin_dir/ui/dialog.sh ]] && . $bin_dir/ui/dialog.sh
+  else
+    error "can not run in dialog mode due to 'dialog' not found"
+    exit 1
+  fi
+elif [[ $@ =~ --ui-text ]] ; then
   [ -f $bin_dir/ui/text.sh ] && . $bin_dir/ui/text.sh
 else
   [ -f $bin_dir/ui/cli-base.sh ] && . $bin_dir/ui/cli-base.sh
