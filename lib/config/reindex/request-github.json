@@ -1,0 +1,17 @@
+{
+  "source": {
+    "remote": {
+      "host": "https://elasticsearch-old:9200"
+    },
+    "index": "github",
+    "_source": ["closed_at", "comments", "created_at", "id", "state", "title", "updated_at"]
+  },
+  "dest": {
+    "index": "github",
+    "type": "issues"
+  },
+  "script": {
+    "source": "ctx._source.summary = ctx._source.remove(\"title\")",
+    "lang": "painless"
+  }
+}

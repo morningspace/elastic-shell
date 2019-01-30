@@ -152,6 +152,7 @@ fi
 [ -f $config_dir/main.properties ] && . $config_dir/main.properties
 [ -f $bin_dir/common/log.sh ] && . $bin_dir/common/log.sh
 [ -f $bin_dir/common/net.sh ] && . $bin_dir/common/net.sh
+[ -f $bin_dir/common/task.sh ] && . $bin_dir/common/task.sh
 
 if [[ $@ =~ --ui-text ]] ; then
   [ -f $bin_dir/ui/text.sh ] && . $bin_dir/ui/text.sh

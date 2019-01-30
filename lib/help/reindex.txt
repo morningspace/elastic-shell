@@ -1,0 +1,33 @@
+
+Elastic Shell - Reindex
+
+Usage: elash reindex [OPTIONS] COMMAND [ARGS]
+
+Commands:
+  cat               Elasticsearch cat APIs
+  run               Run a reindex job
+  tasks             Manage tasks
+    running         List running tasks
+    completed       List completed tasks
+  report            Show reindex report
+  config            Show configuration
+
+Options:
+  --help            Help docs
+  --ui-text         Launch text UI
+
+Examples:
+
+# run reindex job with specified reindex request and query
+elash reindex run myjob request-github queries-by-time
+
+# list running reindex tasks
+elash reindex tasks running
+# list completed reindex tasks for specified job
+elash reindex tasks completed myjob
+
+# show report for specified job
+elash reindex report myjob
+
+------------------------------------------------------------------------------
+Learn more @ https://github.com/morningspace/lab-elk-toolkit

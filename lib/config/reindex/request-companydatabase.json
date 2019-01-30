@@ -1,0 +1,17 @@
+{
+  "source": {
+    "remote": {
+      "host": "https://elasticsearch-old:9200"
+    },
+    "index": "companydatabase",
+    "_source": ["FirstName", "LastName", "Designation", "Salary", "DateOfJoining", "Address", "Gender", "Age", "Interests"]
+  },
+  "dest": {
+    "index": "companydatabase",
+    "type": "employees"
+  },
+  "script": {
+    "source": "ctx._source.Hobbies = ctx._source.remove(\"Interests\")",
+    "lang": "painless"
+  }
+}

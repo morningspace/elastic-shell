@@ -6,6 +6,7 @@ Usage: elash COMMAND [OPTIONS] SUBCOMMAND [ARGS]
 Commands:
   index               manage index
   snapshot            manage snapshot
+  reindex             run reindex
 
 Run 'elash COMMAND --help' for more information on a command.
 Run 'elash COMMAND --ui-text' to launch text UI.
