@@ -94,13 +94,6 @@ msgbox() {
   local text=$2
 
   header "$title" "$text"
-
-  case $title in
-    "error") error "$text" ;;
-    "warn") warn "$text" ;;
-    "info") info "$text" ;;
-    *) echo $title: $text ;;
-  esac
 }
 
 textbox() {
