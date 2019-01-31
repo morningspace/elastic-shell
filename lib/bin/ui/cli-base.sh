@@ -12,11 +12,10 @@ on_init() {
 
   if array_contains app_args "--dry-run" || ! exists 'curl' ; then
     if [[ -f $config_dir/dryrun.properties ]] ; then
-      local OLDIFS=$IFS
-      IFS=$'\r\n'
-      dryrun=($(<$config_dir/dryrun.properties))
+      while IFS='' read -r line || [[ -n "$line" ]] ; do
+        dryrun+=("$line")
+      done < $config_dir/dryrun.properties
       echo 0 > $tmp_dryrun
-      IFS=$OLDIFS
     fi
 
     curl() {
@@ -32,7 +31,7 @@ on_init() {
         local url=${BASH_REMATCH[1]}
         local dryrun_pos=$(cat $tmp_dryrun) run
         while (( dryrun_pos < ${#dryrun[@]} )) ; do
-          run=(${dryrun[$dryrun_pos]})
+          run=(${dryrun[$dryrun_pos]/=/ })
           [[ $run =~ ^# ]] && (( ++dryrun_pos )) && continue
           [[ ${run[0]} == $url ]] && (( ++dryrun_pos )) && res=${run[@]:1}
           break
