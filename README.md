@@ -10,7 +10,7 @@ Run `elash --help` from command line to learn more.
 
 Elastic Shell can run either inside or outside Docker container.
 
-The Docker image has installed Elastic Shell with all its dependencies, such as `curl`, `jq`, etc. Hence, you don't have to install them by yourself. To run in Docker container, simply pull the image from Docker Hub.
+The Docker image has installed Elastic Shell with all its dependencies, such as `curl`, `jq`, `dialog`, etc. Hence, you don't have to install them by yourself. To run in Docker container, simply pull the image from Docker Hub.
 ```
 docker pull morningspace/elastic-shell
 ```
@@ -21,6 +21,12 @@ You can also run Elastic Shell without Docker. Since it's just a set of shell sc
 
 Elastic Shell can be run not only as CLI command, but also in interactive mode, where it allows you to input values according to prompts and check outputs in interactive manner.
 
-To run in interactive mode, you can specify the option `--ui-text`, which provides the pure text-based user interface.
+To run in interactive mode, you can specify either one of the two below options:
+
+* --ui-text, the pure text-based user interface.
 
 ![](images/ui-text.png)
+
+* --ui-dialog, the dialog-based user interface with better user interactive experience. It requires `dialog` to be installed as a dependency.
+
+![](images/ui-dialog.png)
