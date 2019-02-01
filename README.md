@@ -72,6 +72,7 @@ Or add it into ~/.bashrc so that can be enabled automatically anytime when you o
 Elastic Shell has a few dependencies to make it work. You may need to install them by yourself if not use the Docker image. 
 
 Most of the dependencies are optional. There will be alternatives or feature restricted if they are not installed.
+
 |Dependency			|If Not Installed
 |:----					|:----
 |curl           |launch in dry run mode
