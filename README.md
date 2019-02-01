@@ -21,7 +21,7 @@ You can also run Elastic Shell without Docker. Since it's just a set of shell sc
 
 Elastic Shell can be run not only as CLI command, but also in interactive mode, where it allows you to input values according to prompts and check outputs in interactive manner.
 
-To run in interactive mode, you can specify either one of the two below options:
+To run in interactive mode, you can specify either one of the below two options:
 
 * --ui-text, the pure text-based user interface.
 
