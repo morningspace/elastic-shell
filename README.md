@@ -16,3 +16,11 @@ docker pull morningspace/elastic-shell
 ```
 
 You can also run Elastic Shell without Docker. Since it's just a set of shell scripts, you can download and put it somewhere, create a soft link to `bin/main.sh`, or add into PATH environment variable, so that you can run it from anywhere.
+
+## Interactive mode
+
+Elastic Shell can be run not only as CLI command, but also in interactive mode, where it allows you to input values according to prompts and check outputs in interactive manner.
+
+To run in interactive mode, you can specify the option `--ui-text`, which provides the pure text-based user interface.
+
+![](images/ui-text.png)
