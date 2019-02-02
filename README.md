@@ -25,11 +25,11 @@ To run in interactive mode, you can specify either one of the below two options:
 
 * --ui-text, the pure text-based user interface.
 
-![](images/ui-text.png)
+![](images/ui-text.jpg)
 
 * --ui-dialog, the dialog-based user interface with better user interactive experience. It requires `dialog` to be installed as a dependency.
 
-![](images/ui-dialog.png)
+![](images/ui-dialog.jpg)
 
 ## Trouble Shooting
 
