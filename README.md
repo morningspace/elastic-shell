@@ -48,15 +48,11 @@ To enable dry run, add option `--dry-run` when run Elastic Shell from command li
 elash index --dry-run delete github
 ```
 
-![](images/dry-run.png)
-
 Instead of sending request to server, it always returns the fake response. You can customize the response by modifying `config/dryrun.properties`. For each request, add the full path URL as key, and the designated fake response as value. When in dry run mode, Elastic Shell will find the entry that matches the request URL, and print the pre-defined response as if it's returned from server.
 
 ## Auto Completion
 
 Elastic Shell supports auto completion when you type commands from command line.
-
-![](images/auto-completion.png)
 
 The Docker image has installed `bash completion` and enabled this feature for you by default. To trigger it when you type commands, press two tabs, then it will give you the suggestions based on the context.
 
