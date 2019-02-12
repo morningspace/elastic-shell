@@ -31,15 +31,15 @@ To run in interactive mode, you can specify either one of the below two options:
 
 ![](images/ui-dialog.jpg)
 
-## Trouble Shooting
+## Trouble shooting
 
-### Enable Logging
+### Enable logging
 
 Elastic Shell uses `syslogd` to output its logs. When use the Docker image, it's been configured out of the box. Just run `syslogd` from command line in container, you will see the logs in `/var/log/elash.log`.
 
 If not use the Docker image, you need to put the `etc/syslog.conf` under `/etc` then start `syslogd` by yourself.
 
-### Dry Run
+### Dry run
 
 Some operations, e.g. to delete index, may be dangerous. To avoid mistake, you can run Elastic Shell in dry run mode before run in production environment.
 
@@ -50,7 +50,7 @@ elash index --dry-run delete github
 
 Instead of sending request to server, it always returns the fake response. You can customize the response by modifying `config/dryrun.properties`. For each request, add the full path URL as key, and the designated fake response as value. When in dry run mode, Elastic Shell will find the entry that matches the request URL, and print the pre-defined response as if it's returned from server.
 
-## Auto Completion
+## Auto completion
 
 Elastic Shell supports auto completion when you type commands from command line.
 
