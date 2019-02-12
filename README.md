@@ -35,4 +35,6 @@ Those located in `lib/config/index/companydatabase` are from [this post](http://
 
 ## Difference with Curator
 
-[Curator](https://github.com/elastic/curator) is a great tool written in Python to manage Elasticsearch indices. Elastic Shell is not going to replace it, but a lightweight supplement, although there is a bit of overlap on functionality. Elastic Shell is much more focusing on providing assistance on some advanced Elasticsearch management tasks such as reindex, upgrade, and it's purely shell-based without Python installed, which gives people just another option. More discussion on this could be found [here](https://discuss.elastic.co/t/looking-for-shell-based-elasticsearch-client-or-something-similar-to-curator-run-in-command-line/166009/5).
+[Curator](https://github.com/elastic/curator) is a great tool written in Python to manage Elasticsearch indices. Elastic Shell is not going to replace it, but a lightweight supplement, although there is a bit of overlap on functionality. Elastic Shell is much more focusing on providing assistance on some advanced Elasticsearch management tasks such as reindex, upgrade, and it's purely shell-based without Python installed, which gives people just another option.
+
+More discussion on this can be found [here](https://discuss.elastic.co/t/looking-for-shell-based-elasticsearch-client-or-something-similar-to-curator-run-in-command-line/166009/5).
