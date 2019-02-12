@@ -21,9 +21,9 @@ You can also run Elastic Shell without Docker. Since it's just a set of shell sc
 
 There are some sample documents distributed along with Elastic Shell. If you have no data at hand, feel free to populate them into your Elasticsearch deployment for testing or demonstration purpose.
 
-Those located in `lib/config/index/github` are actually GitHub issues as a snapshot grabbed from [Elasticsearch](https://github.com/elastic/elasticsearch) GitHub repository using [GitHub API](https://developer.github.com/), e.g. `bulk-open-issues.json` includes all open issues and `bulk-closed-issues.json` includes part of the closed issues.
+Those located in `lib/config/index/github` are actually GitHub issues as a snapshot grabbed from [Elasticsearch](https://github.com/elastic/elasticsearch) GitHub repository using [GitHub API](https://developer.github.com/), e.g. `bulk-open-issues.json` includes all open issues and `bulk-closed-issues.json` includes part of closed issues.
 
-Those located in `lib/config/index/companydatabase` are from [this post](http://ikeptwalking.com/elasticsearch-sample-data/). It includes a dataset with 100k employees that are generated randomly.
+Those located in `lib/config/index/companydatabase` are from [this post](http://ikeptwalking.com/elasticsearch-sample-data/). It includes a dataset with 100k employees that are generated randomly. Thanks to the author.
 
 ## Difference with Curator
 
