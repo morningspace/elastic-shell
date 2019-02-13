@@ -18,7 +18,7 @@ next_arg_pos() {
 print_options() {
   info
   [[ $# == 0 ]] && set -- "none"
-  info "Options:" "${@/#/  }"
+  info "Commands/Options:" "${@/#/  }"
 }
 
 formbox() {
