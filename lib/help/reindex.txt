@@ -31,4 +31,4 @@ elash reindex tasks completed myjob
 elash reindex report myjob
 
 ------------------------------------------------------------------------------
-Learn more @ https://github.com/morningspace/lab-elk-toolkit
+Learn more @ https://github.com/morningspace/elastic-shell

@@ -32,4 +32,4 @@ elash snapshot list my_backup
 elash snapshot restore my_backup github
 
 ------------------------------------------------------------------------------
-Learn more @ https://github.com/morningspace/lab-elk-toolkit
+Learn more @ https://github.com/morningspace/elastic-shell
