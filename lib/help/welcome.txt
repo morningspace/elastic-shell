@@ -5,7 +5,7 @@
   |  __/ | (_| \__ \ |_| | (__  \__ \ | | |  __/ | |
    \___|_|\__,_|___/\__|_|\___| |___/_| |_|\___|_|_|
 
-  Created by MorningSpace Lab
+  Created by MorningSpace Studio
 
   Learn more @ https://github.com/morningspace/elastic-shell
 
