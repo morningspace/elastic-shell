@@ -29,7 +29,7 @@ To run in interactive mode, you can specify either one of the below two options:
 
 * --ui-dialog, the dialog-based user interface with better user interactive experience. It requires `dialog` to be installed as a dependency.
 
-![](images/ui-dialog.jpg)
+![](images/ui-dialog.png)
 
 ## Trouble shooting
 
