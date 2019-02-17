@@ -1,7 +1,7 @@
 {
   "source": {
     "remote": {
-      "host": "https://elasticsearch-old:9200"
+      "host": "http://elasticsearch-old:9200"
     },
     "index": "github",
     "_source": ["closed_at", "comments", "created_at", "id", "state", "title", "updated_at"]
