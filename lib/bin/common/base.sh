@@ -12,8 +12,6 @@ tmp_dryrun=/tmp/tmp_dryrun$$
 selected_dir=
 selected_file=
 
-MAX_LINES=300
-
 exists() {
   command -v $1 >/dev/null 2>&1
 }

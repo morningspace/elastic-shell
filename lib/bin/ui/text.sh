@@ -123,7 +123,7 @@ textbox() {
   (
   local lines=1
   while IFS= read -r line || [[ -n $line ]] ; do
-    (( $lines > $MAX_LINES )) && echo "(trancated...)" && break
+    (( $lines > $common_max_read_lines )) && echo "(trancated...)" && break
     echo "$line"
     (( ++lines ))
   done
