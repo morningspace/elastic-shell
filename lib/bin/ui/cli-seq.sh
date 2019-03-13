@@ -1,7 +1,7 @@
 #!/bin/bash
 
 arg_pos=0
-ignored_args=("--dry-run")
+ignored_args=("--dry-run" "--quiet")
 
 next_arg_pos() {
   while (( arg_pos < ${#app_args[@]} )) ; do

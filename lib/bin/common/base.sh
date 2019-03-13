@@ -152,6 +152,8 @@ if ! exists "jq" ; then
   }
 fi
 
+[[ $@ =~ --quiet ]] && is_quiet=1
+
 [ -f $config_dir/main.properties ] && . $config_dir/main.properties
 [ -f $bin_dir/common/log.sh ] && . $bin_dir/common/log.sh
 [ -f $bin_dir/common/net.sh ] && . $bin_dir/common/net.sh
