@@ -80,7 +80,7 @@ tasks_completed() {
   for i in ${!tasks[@]} ; do
     eval "local task=(${tasks[$i]})"
     local id=${task[0]}
-    local res=$(net_get ".tasks/task/$id" --silent)
+    local res=$(net_get ".tasks/task/$id?_source=task" --silent)
     local found=$(echo $res | value_of .found)
     if [[ $found == true ]] ; then
       echo $res | to_json >> $tmp
