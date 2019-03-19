@@ -26,13 +26,15 @@ net_req() {
       set -- "$@" --cacert $net_certificate
     fi
   fi
+  
+  set -- "$@" --show-error
 
   if [[ $action == "HEAD" ]] ; then
-    echo "curl --show-error -I $net_host/$api 2>&1 $@" | log
-    curl --show-error -I $net_host/$api 2>&1 "$@"
+    echo "curl $@ -I $net_host/$api 2>&1" | log
+    curl "$@" -I $net_host/$api 2>&1
   else
-    echo "curl --show-error -X $action $net_host/$api 2>&1 $@" | log
-    curl --show-error -X $action $net_host/$api 2>&1 "$@"
+    echo "curl $@ -X $action $net_host/$api 2>&1" | log
+    curl "$@" -X $action $net_host/$api 2>&1
   fi
 
   echo $? >$tmp_ret
