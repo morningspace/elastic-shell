@@ -148,7 +148,7 @@ full() {
 
 rolling() {
   select_host
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
   
   net_host=$selected_host
   do_upgrade $selected_hostname

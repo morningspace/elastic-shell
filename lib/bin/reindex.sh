@@ -12,12 +12,12 @@ config_reindex_dir="$config_dir/reindex"
 run() {
   init_job $reindex_wait_for_completion
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   local dir=$config_reindex_dir
   select_file $dir "Reindex Request" "request"
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   local reindex_file=$selected_file
   if exists "jq" ; then
@@ -26,7 +26,7 @@ run() {
     selected_file=none
   fi
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   local queries_file=$selected_file
   if [[ $queries_file == "none" ]] ; then

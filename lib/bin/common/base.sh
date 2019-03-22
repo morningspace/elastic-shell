@@ -64,7 +64,7 @@ select_dir() {
   local item=$(echo $2 | tr '[:upper:]' '[:lower:]')
   menubox "$title" "Select $item from the list:" "selected_dir" "${dirs[@]}"
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   if [[ $selected_dir == "..." ]] ; then
     local default_value=$3
@@ -95,7 +95,7 @@ cat_query() {
   while true ; do
     menubox "cat" "Select an Elasticsearch cat API:" "choice" "${options[@]}"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     case $choice in
       "indices") do_cat_query "indices" ;;

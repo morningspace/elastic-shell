@@ -9,17 +9,17 @@ tasks=()
 input_job_name() {
   inputbox "Job Name" "Input a job name" "job_name" $job_name
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
   [[ ! -z $job_name ]] && return 0 || (
     msgbox "Error" "The job name is required!"
-    return -1
+    return 255
   )
 }
 
 find_job_name() {
   select_file .reports "Job" "" --allow-input
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
   [[ $selected_file == "..." ]] && input_job_name || job_name=$selected_file
 
   return 0
@@ -32,7 +32,7 @@ reset_job_info() {
 init_job() {
   input_job_name
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   reset_job_info
 
@@ -69,11 +69,11 @@ tasks_running() {
 tasks_completed() {
   find_job_name
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   load_tasks_local
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   cp /dev/null $tmp
 
@@ -101,7 +101,7 @@ tasks() {
 
   menubox "Tasks" "Select a category:" "choice" "${options[@]}"
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   local actions=$1 # e.g. *reindex
   case $choice in
@@ -116,7 +116,7 @@ load_tasks_local() {
     return 0
   else
     msgbox "Error" "Task data for job '$job_name' not found!"
-    return -1
+    return 255
   fi
 }
 
@@ -171,11 +171,11 @@ gen_report() {
     reset_job_info
     load_tasks_local
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     exists "jq" && get_tasks
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
   fi
 
   local info="$job_total $job_created $job_updated $job_deleted $job_batches $job_time"
@@ -220,7 +220,7 @@ gen_summary() {
 report() {
   find_job_name
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   local wait_for_completion=$1
   local report=.reports/$job_name
@@ -228,7 +228,7 @@ report() {
     gen_report $wait_for_completion
   fi
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   (
     [[ -f $report.txt ]] && cat $report.txt || cat $report.tmp

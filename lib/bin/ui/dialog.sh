@@ -27,7 +27,7 @@ formbox() {
   dialog --backtitle "$backtitle" --title "$title" \
     --form "$text" $((num+7)) 65 $num "${items[@]}" 2>$tmp
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   # local inputs=($(cat $tmp))
   local inputs=()
@@ -59,7 +59,7 @@ menubox() {
   dialog --backtitle "$backtitle" --title "$title" --menu "$text" \
     $(($num+7)) 50 $num "${options[@]}" 2>$tmp
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   local item=${items[$(cat $tmp)]}
   eval "$selected=\"$item\""
@@ -76,7 +76,7 @@ inputbox() {
   dialog --backtitle "$backtitle" --title "$title" \
     --inputbox "$text" 8 60 "$value" 2>$tmp
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   local input=$(cat $tmp)
   eval "$field=${input:-\"$value\"}"

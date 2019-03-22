@@ -41,7 +41,7 @@ formbox() {
   while true ; do
     select item in "${items[@]}" ; do
       if [[ ! -z $item ]] ; then
-        [[ $item == "return" ]] && return -1
+        [[ $item == "return" ]] && return 255
 
         field=${item%=*}
         value=${item#*=}
@@ -94,7 +94,7 @@ menubox() {
       eval "$selected=\"$item\""
       log info "User choice: $selected=$item"
 
-      [[ $item == "return" ]] && return -1 || return 0
+      [[ $item == "return" ]] && return 255 || return 0
     fi
   done
 }

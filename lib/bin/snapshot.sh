@@ -20,14 +20,14 @@ input_name() {
   inputbox "Snapshot Name" "Input snapshot name" "snapshot"
   if [[ -z $snapshot ]] ; then
     msgbox "Error" "Snapshot name is required!"
-    return -1
+    return 255
   fi
 }
 
 new_repo() {
   input_repo
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   net_put "_snapshot/$repo" \
     --data "$(cat $config_snapshot_dir/repo.json)" --silent | \
@@ -42,7 +42,7 @@ repo() {
 
   menubox "Repo" "Select a function:" "choice" "${options[@]}"
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   case $choice in
     "new") new_repo ;;
@@ -52,11 +52,11 @@ repo() {
 create() {
   input_repo
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   input_name
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   net_put "_snapshot/$repo/$snapshot?wait_for_completion=true" --silent | \
     to_json | textbox "Create Snapshot $snapshot"
@@ -65,7 +65,7 @@ create() {
 list() {
   input_repo
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   net_get "_snapshot/$repo/_all" --silent | \
     to_json | textbox "List Snapshots"
@@ -74,11 +74,11 @@ list() {
 restore() {
   input_repo
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   input_name
 
-  [[ $? != 0 ]] && return -1
+  [[ $? != 0 ]] && return 255
 
   net_post "_snapshot/$repo/$snapshot/_restore" --silent | \
     to_json | textbox "Restore Snapshot $snapshot"

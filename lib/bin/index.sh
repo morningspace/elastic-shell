@@ -17,12 +17,12 @@ create() {
   while true ; do
     select_dir $config_index_dir "Index" "$index_name"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local index=$selected_dir
     select_file $config_index_dir/$index "Index Request" "index" --allow-none
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local index_req={}
     if [[ $selected_file != none ]] ; then
@@ -44,7 +44,7 @@ bulk() {
   while true ; do
     select_dir $config_index_dir "Index" "$index_name"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local dir=$config_index_dir/$selected_dir
     while true ; do
@@ -64,12 +64,12 @@ doc_api() {
   while true ; do
     select_dir $config_index_dir "Index" "$index_name"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local index=$selected_dir doc_type
     inputbox "Document Type" "Input a document type" "doc_type"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     if [[ -z $doc_type ]] ; then 
       msgbox "Error" "Document type is required!"
@@ -101,7 +101,7 @@ doc() {
   while true ; do
     menubox "Doc" "Select a function:" "choice" "${options[@]}"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     case $choice in
       "add") doc_api add ;;
@@ -113,12 +113,12 @@ update_settings() {
   while true ; do
     select_dir $config_index_dir "Index" "$index_name"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local index=$selected_dir
     select_file $config_index_dir/$index "Index Settings" "settings"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local settings_req=$(cat $config_index_dir/$index/$selected_file.json | \
       sed -e "s/@@index_number_of_replicas/$index_number_of_replicas/g" | \
@@ -140,7 +140,7 @@ update() {
   while true ; do
     menubox "Update" "Select a function:" "choice" "${options[@]}"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     case $choice in
       "settings") update_settings add ;;
@@ -152,7 +152,7 @@ delete() {
   while true ; do
     select_dir $config_index_dir "Index" "$index_name"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local index=$selected_dir
     net_del $index --silent | to_json | textbox "Delete $index"
@@ -163,13 +163,13 @@ search() {
   while true ; do
     select_dir $config_index_dir "Index" "$index_name"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local index=$selected_dir
     local dir=$config_index_dir/$index
     select_file $config_index_dir/$index "Search Request" "search"
 
-    [[ $? != 0 ]] && return -1
+    [[ $? != 0 ]] && return 255
 
     local search_req="@$dir/$selected_file.json"
 
