@@ -199,7 +199,7 @@ alias_api() {
           \"actions\" : [
             { \"$op\" : { \"index\" : \"$index\", \"alias\" : \"$alias_name\" } }
           ]
-        }" | to_json | textbox $title
+        }" | to_json | textbox "$title"
       done ;;
   esac
 }
