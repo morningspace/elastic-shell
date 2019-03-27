@@ -8,6 +8,7 @@ Commands:
   create            Create new index
   update            Update index settings
   delete            Delete existing index
+  alias             Manipulate index aliases
   doc               Manipulate index documents
   bulk              Send bulk post to index
   search            Issue search request
@@ -42,6 +43,13 @@ elash index update settings github settings-parameterized
 elash index delete github
 # delete multiple indices
 elash index delete github test
+
+# add an index alias
+elash index alias add github github_issues
+# list all indices aliases
+elash index alias list
+# delete an index alias
+elash index alias delete github github_issues
 
 # add a single doc
 elash index doc add github issues doc-issue-1
