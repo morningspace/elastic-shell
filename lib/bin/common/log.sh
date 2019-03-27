@@ -40,7 +40,7 @@ error() {
 }
 
 console_log() {
-  [[ $is_quiet ]] && return
+  [[ $is_quiet && $1 != error ]] && return
 
   if [[ $1 == info ]] ; then
     echo "$2"
