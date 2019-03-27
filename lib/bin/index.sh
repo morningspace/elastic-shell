@@ -178,6 +178,53 @@ search() {
   done
 }
 
+alias_api() {
+  case $1 in
+    "list")
+      net_get "_aliases" --silent | to_json | textbox "List Alias" ;;
+    "add"|"delete")
+      while true ; do
+        select_dir $config_index_dir "Index" "$index_name"
+
+        [[ $? != 0 ]] && return 255
+
+        local index=$selected_dir
+        local alias_name
+
+        inputbox "Alias Name" "Input alias name" "alias_name"
+
+        local op="add" title="Add Alias"
+        [[ $1 == delete ]] && op="remove" && title="Delete Alias"
+        net_post "_aliases" --silent --data "{
+          \"actions\" : [
+            { \"$op\" : { \"index\" : \"$index\", \"alias\" : \"$alias_name\" } }
+          ]
+        }" | to_json | textbox $title
+      done ;;
+  esac
+}
+
+index_alias() {
+  local choice
+  local options=(
+    "add"
+    "list"
+    "delete"
+  )
+
+  while true ; do
+    menubox "Alias" "Select a function:" "choice" "${options[@]}"
+
+    [[ $? != 0 ]] && return 255
+
+    case $choice in
+      "add") alias_api add ;;
+      "list") alias_api list ;;
+      "delete") alias_api delete ;;
+    esac
+  done
+}
+
 init_app
 
 options=(
@@ -185,6 +232,7 @@ options=(
   "create"
   "update"
   "delete"
+  "alias"
   "doc"
   "bulk"
   "search"
@@ -201,6 +249,7 @@ while true ; do
     "create") create ;;
     "update") update ;;
     "delete") delete ;;
+    "alias") index_alias ;;
     "doc") doc ;;
     "bulk") bulk ;;
     "search") search ;;
