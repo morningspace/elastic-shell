@@ -6,6 +6,16 @@ It supports basic management of Elasticsearch index, snapshot, etc, and also pro
 
 Run `elash --help` from command line to learn more.
 
+You can also watch the tutorial "Elastic Shell 101" video series on [YouTube](https://www.youtube.com/watch?v=9r_RNz89SVw&list=PLVQM6jLkNkfoJSTI2BgEZ4lwWT-dfsf51) or [YouKu](https://v.youku.com/v_show/id_XNDExNjc0OTU4NA==.html?f=52133377). Or, read the corresponding posts on [晴耕小筑](https://morningspace.github.io/studio).
+
+| Title | Links
+| ---- 	|:----
+| Elastic Shell 101: Getting Started | [Post](https://morningspace.github.io/tech/elash101-1/) [YouTube](https://youtu.be/9r_RNz89SVw) [YouKu](https://v.youku.com/v_show/id_XNDEwNjI0OTk2OA==.html?f=52133377) 
+| Elastic Shell 101: Working with Index | [Post](https://morningspace.github.io/tech/elash101-2/) [YouTube](https://youtu.be/nWX8miFbRPQ) [YouKu](https://v.youku.com/v_show/id_XNDExNjc0OTU4NA==.html?f=52133377)
+| Elastic Shell 101: Manage Snapshot Interactively | [Post](https://morningspace.github.io/tech/elash101-3/) [YouTube](https://youtu.be/_KwIkjoRQS8) [YouKu](https://v.youku.com/v_show/id_XNDEyODY2NTA3Mg==.html?f=52133377)
+| Elastic Shell 101: Reindex Using Dialog | [Post](https://morningspace.github.io/tech/elash101-4/) [YouTube](https://youtu.be/ywgxY1h0PsA) [YouKu](https://v.youku.com/v_show/id_XNDEzNTMwMTU5Ng==.html?f=52133377)
+| Elastic Shell 101: Advanced Features | [Post](https://morningspace.github.io/tech/elash101-5/) [YouTube](https://youtu.be/wc4CnChWxPE) [YouKu](https://v.youku.com/v_show/id_XNDE1NTQ1NjIwNA==.html?f=52133377)
+
 ## How to run?
 
 Elastic Shell can run either inside or outside Docker container.
