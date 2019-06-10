@@ -6,7 +6,7 @@ It supports basic management of Elasticsearch index, snapshot, etc, and also pro
 
 Run `elash --help` from command line to learn more.
 
-You can also watch the tutorial **"Elastic Shell 101"** video series on [YouTube](https://www.youtube.com/watch?v=9r_RNz89SVw&list=PLVQM6jLkNkfoJSTI2BgEZ4lwWT-dfsf51) or [YouKu](https://v.youku.com/v_show/id_XNDEwNjI0OTk2OA==.html?f=52133377). Or, read the corresponding posts on [晴耕小筑](https://morningspace.github.io/studio).
+You can also watch the tutorial **"Elastic Shell 101"** video series on [YouTube](https://www.youtube.com/watch?v=9r_RNz89SVw&list=PLVQM6jLkNkfoJSTI2BgEZ4lwWT-dfsf51) or [YouKu](https://v.youku.com/v_show/id_XNDEwNjI0OTk2OA==.html?f=52133377). Or, read the corresponding posts on [晴耕小筑](https://morningspace.github.io/tags/#studio-elash-101).
 
 | Title | Links
 | ---- 	|:----
