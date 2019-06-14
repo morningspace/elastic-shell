@@ -1,4 +1,4 @@
-# Elastic Shell
+# Elastic Shell ![version v0.6](https://img.shields.io/badge/version-v0.6-brightgreen.svg) ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Elastic Shell (or Elash in abbreviation) is a set of utilities that manage Elasticsearch and are purely written in Bash Shell.
 
